@@ -8693,7 +8693,7 @@ F.console = function() {
     console.log('====================================================');
     console.log('PID           : ' + process.pid);
     console.log('Node.js       : ' + process.version);
-    console.log(FRAMEWORKNAME.toString().patdRight(14," ")+ ': v' + F.version);
+    console.log(FRAMEWORKNAME.toString().padRight(14," ")+ ': v' + F.version);
     console.log('OS            : ' + Os.platform() + ' ' + Os.release());
     console.log('Memory        : ' + memory.heapUsed.filesize(2) + ' / ' + memory.heapTotal.filesize(2));
     console.log('User          : ' + Os.userInfo().username);
