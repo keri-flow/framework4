@@ -76,6 +76,7 @@ const BLACKLIST_AUDIT = { password: 1, token: 1, accesstoken: 1, access_token: 1
 const isTYPESCRIPT = (/\.ts$/).test(process.argv[1]);
 const SOCKETWINDOWS = '\\\\?\\pipe';
 const SESSIONSEPARATOR = '\0';
+const FRAMEWORKNAME = (process?.env?.FRAMEWORK_NAME ?? 'Total.js').toString().substr(0,14);
 const CALLMETHOD = { POST: '+', PUT: '+', PATCH: '#' };
 const QB = require('./querybuilder');
 const Api = require('./api');
@@ -589,18 +590,18 @@ HEADERS.sse[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.sse.Pragma = 'no-cache';
 HEADERS.sse.Expires = '-1';
 HEADERS.sse[HEADER_TYPE] = 'text/event-stream';
-HEADERS.sse['X-Powered-By'] = 'Total.js';
+HEADERS.sse['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.file_lastmodified = {};
 HEADERS.file_lastmodified['Access-Control-Allow-Origin'] = '*';
 HEADERS.file_lastmodified[HEADER_CACHE] = 'public, max-age=11111111';
-HEADERS.file_lastmodified['X-Powered-By'] = 'Total.js';
+HEADERS.file_lastmodified['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.file_release_compress = {};
 HEADERS.file_release_compress[HEADER_CACHE] = 'public, max-age=11111111';
 HEADERS.file_release_compress.Vary = 'Accept-Encoding, Last-Modified, User-Agent';
 HEADERS.file_release_compress['Access-Control-Allow-Origin'] = '*';
 HEADERS.file_release_compress['Last-Modified'] = 'Mon, 01 Jan 2001 08:00:00 GMT';
 HEADERS.file_release_compress['Content-Encoding'] = 'gzip';
-HEADERS.file_release_compress['X-Powered-By'] = 'Total.js';
+HEADERS.file_release_compress['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.file_release_compress_range = {};
 HEADERS.file_release_compress_range['Accept-Ranges'] = 'bytes';
 HEADERS.file_release_compress_range[HEADER_CACHE] = 'public, max-age=11111111';
@@ -610,13 +611,13 @@ HEADERS.file_release_compress_range['Last-Modified'] = 'Mon, 01 Jan 2001 08:00:0
 HEADERS.file_release_compress_range['Content-Encoding'] = 'gzip';
 HEADERS.file_release_compress_range[HEADER_LENGTH] = '0';
 HEADERS.file_release_compress_range['Content-Range'] = '';
-HEADERS.file_release_compress_range['X-Powered-By'] = 'Total.js';
+HEADERS.file_release_compress_range['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.file_release = {};
 HEADERS.file_release[HEADER_CACHE] = 'public, max-age=11111111';
 HEADERS.file_release.Vary = 'Accept-Encoding, Last-Modified, User-Agent';
 HEADERS.file_release['Access-Control-Allow-Origin'] = '*';
 HEADERS.file_release['Last-Modified'] = 'Mon, 01 Jan 2001 08:00:00 GMT';
-HEADERS.file_release['X-Powered-By'] = 'Total.js';
+HEADERS.file_release['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.file_release_range = {};
 HEADERS.file_release_range['Accept-Ranges'] = 'bytes';
 HEADERS.file_release_range[HEADER_CACHE] = 'public, max-age=11111111';
@@ -625,7 +626,7 @@ HEADERS.file_release_range['Access-Control-Allow-Origin'] = '*';
 HEADERS.file_release_range['Last-Modified'] = 'Mon, 01 Jan 2001 08:00:00 GMT';
 HEADERS.file_release_range[HEADER_LENGTH] = '0';
 HEADERS.file_release_range['Content-Range'] = '';
-HEADERS.file_release_range['X-Powered-By'] = 'Total.js';
+HEADERS.file_release_range['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.file_debug_compress = {};
 HEADERS.file_debug_compress[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.file_debug_compress.Vary = 'Accept-Encoding, Last-Modified, User-Agent';
@@ -633,7 +634,7 @@ HEADERS.file_debug_compress['Access-Control-Allow-Origin'] = '*';
 HEADERS.file_debug_compress.Pragma = 'no-cache';
 HEADERS.file_debug_compress.Expires = '-1';
 HEADERS.file_debug_compress['Content-Encoding'] = 'gzip';
-HEADERS.file_debug_compress['X-Powered-By'] = 'Total.js';
+HEADERS.file_debug_compress['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.file_debug_compress_range = {};
 HEADERS.file_debug_compress_range['Accept-Ranges'] = 'bytes';
 HEADERS.file_debug_compress_range[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
@@ -644,14 +645,14 @@ HEADERS.file_debug_compress_range.Pragma = 'no-cache';
 HEADERS.file_debug_compress_range.Expires = '-1';
 HEADERS.file_debug_compress_range[HEADER_LENGTH] = '0';
 HEADERS.file_debug_compress_range['Content-Range'] = '';
-HEADERS.file_debug_compress_range['X-Powered-By'] = 'Total.js';
+HEADERS.file_debug_compress_range['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.file_debug = {};
 HEADERS.file_debug[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.file_debug.Vary = 'Accept-Encoding, Last-Modified, User-Agent';
 HEADERS.file_debug.Pragma = 'no-cache';
 HEADERS.file_debug.Expires = '-1';
 HEADERS.file_debug['Access-Control-Allow-Origin'] = '*';
-HEADERS.file_debug['X-Powered-By'] = 'Total.js';
+HEADERS.file_debug['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.file_debug_range = {};
 HEADERS.file_debug_range['Accept-Ranges'] = 'bytes';
 HEADERS.file_debug_range[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
@@ -661,58 +662,58 @@ HEADERS.file_debug_range.Pragma = 'no-cache';
 HEADERS.file_debug_range.Expires = '-1';
 HEADERS.file_debug_range[HEADER_LENGTH] = '0';
 HEADERS.file_debug_range['Content-Range'] = '';
-HEADERS.file_debug_range['X-Powered-By'] = 'Total.js';
+HEADERS.file_debug_range['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.content_mobile_release = {};
 HEADERS.content_mobile_release[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.content_mobile_release.Vary = 'Accept-Encoding, User-Agent';
 HEADERS.content_mobile_release['Content-Encoding'] = 'gzip';
 HEADERS.content_mobile_release.Expires = '-1';
-HEADERS.content_mobile_release['X-Powered-By'] = 'Total.js';
+HEADERS.content_mobile_release['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.content_mobile = {};
 HEADERS.content_mobile[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.content_mobile.Vary = 'Accept-Encoding, User-Agent';
 HEADERS.content_mobile.Expires = '-1';
-HEADERS.content_mobile['X-Powered-By'] = 'Total.js';
+HEADERS.content_mobile['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.content_compress = {};
 HEADERS.content_compress[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.content_compress.Vary = 'Accept-Encoding, Last-Modified, User-Agent';
 HEADERS.content_compress['Content-Encoding'] = 'gzip';
 HEADERS.content_compress.Expires = '-1';
-HEADERS.content_compress['X-Powered-By'] = 'Total.js';
+HEADERS.content_compress['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.content = {};
 HEADERS.content[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.content.Vary = 'Accept-Encoding, Last-Modified, User-Agent';
 HEADERS.content.Expires = '-1';
-HEADERS.content['X-Powered-By'] = 'Total.js';
+HEADERS.content['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.stream_release_compress = {};
 HEADERS.stream_release_compress[HEADER_CACHE] = 'public, max-age=11111111';
 HEADERS.stream_release_compress['Access-Control-Allow-Origin'] = '*';
 HEADERS.stream_release_compress['Content-Encoding'] = 'gzip';
-HEADERS.stream_release_compress['X-Powered-By'] = 'Total.js';
+HEADERS.stream_release_compress['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.stream_release = {};
 HEADERS.stream_release[HEADER_CACHE] = 'public, max-age=11111111';
 HEADERS.stream_release['Access-Control-Allow-Origin'] = '*';
-HEADERS.stream_release['X-Powered-By'] = 'Total.js';
+HEADERS.stream_release['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.stream_debug_compress = {};
 HEADERS.stream_debug_compress[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.stream_debug_compress.Pragma = 'no-cache';
 HEADERS.stream_debug_compress.Expires = '-1';
 HEADERS.stream_debug_compress['Access-Control-Allow-Origin'] = '*';
 HEADERS.stream_debug_compress['Content-Encoding'] = 'gzip';
-HEADERS.stream_debug_compress['X-Powered-By'] = 'Total.js';
+HEADERS.stream_debug_compress['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.stream_debug = {};
 HEADERS.stream_debug[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.stream_debug.Pragma = 'no-cache';
 HEADERS.stream_debug.Expires = '-1';
 HEADERS.stream_debug['Access-Control-Allow-Origin'] = '*';
-HEADERS.stream_debug['X-Powered-By'] = 'Total.js';
+HEADERS.stream_debug['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.binary_compress = {};
 HEADERS.binary_compress[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.binary_compress['Content-Encoding'] = 'gzip';
-HEADERS.binary_compress['X-Powered-By'] = 'Total.js';
+HEADERS.binary_compress['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.binary = {};
 HEADERS.binary[HEADER_CACHE] = 'public';
-HEADERS.binary['X-Powered-By'] = 'Total.js';
+HEADERS.binary['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.authorization = { user: '', password: '', empty: true };
 HEADERS.fsStreamRead = { flags: 'r', mode: '0666', autoClose: true };
 HEADERS.fsStreamReadRange = { flags: 'r', mode: '0666', autoClose: true, start: 0, end: 0 };
@@ -720,15 +721,15 @@ HEADERS.responseLocalize = {};
 HEADERS.responseLocalize['Access-Control-Allow-Origin'] = '*';
 HEADERS.responseNotModified = {};
 HEADERS.responseNotModified[HEADER_CACHE] = 'public, max-age=11111111';
-HEADERS.responseNotModified['X-Powered-By'] = 'Total.js';
+HEADERS.responseNotModified['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.response503 = {};
 HEADERS.response503[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.response503[HEADER_TYPE] = CT_HTML;
-HEADERS.response503['X-Powered-By'] = 'Total.js';
+HEADERS.response503['X-Powered-By'] = FRAMEWORKNAME;
 HEADERS.response503ddos = {};
 HEADERS.response503ddos[HEADER_CACHE] = 'private, no-cache, no-store, max-age=0';
 HEADERS.response503ddos[HEADER_TYPE] = CT_TEXT;
-HEADERS.response503ddos['X-Powered-By'] = 'Total.js';
+HEADERS.response503ddos['X-Powered-By'] = FRAMEWORKNAME;
 
 Object.freeze(HEADERS.authorization);
 
@@ -2179,7 +2180,7 @@ function Framework() {
 		debug: true,
 
 		nowarnings: process.argv.indexOf('--restart') !== -1,
-		name: 'Total.js',
+		name: FRAMEWORKNAME,
 		version: '1.0.0',
 		author: '',
 		secret: self.syshash,
@@ -2237,7 +2238,7 @@ function Framework() {
 
 		// 'static-accepts-custom': [],
 		default_crypto_iv: Buffer.from(self.syshash).slice(0, 16),
-		default_xpoweredby: 'Total.js',
+		default_xpoweredby: FRAMEWORKNAME,
 		default_layout: 'layout',
 		default_theme: '',
 		default_proxy: '',
@@ -8687,49 +8688,50 @@ F.custom = function(mode, http, request, response, options, callback) {
 
 F.console = function() {
 
-	var memory = process.memoryUsage();
+  if(DEBUG || process?.env?.SHOWINFOS){
+    var memory = process.memoryUsage();
+    console.log('====================================================');
+    console.log('PID           : ' + process.pid);
+    console.log('Node.js       : ' + process.version);
+    console.log(FRAMEWORKNAME.toString().patdRight(14," ")+ ': v' + F.version);
+    console.log('OS            : ' + Os.platform() + ' ' + Os.release());
+    console.log('Memory        : ' + memory.heapUsed.filesize(2) + ' / ' + memory.heapTotal.filesize(2));
+    console.log('User          : ' + Os.userInfo().username);
+    console.log('====================================================');
+    console.log('Name          : ' + CONF.name);
+    console.log('Version       : ' + CONF.version);
+    CONF.author && console.log('Author        : ' + CONF.author);
+    console.log('Date          : ' + NOW.format('yyyy-MM-dd HH:mm:ss'));
+    console.log('Mode          : ' + (DEBUG ? 'debug' : 'release'));
+    F.threads && console.log('Threads       : ' + Object.keys(F.threads).join(', '));
+    global.THREAD && console.log('Thread        : ' + global.THREAD);
+    console.log('====================================================');
+    CONF.default_root && console.log('Root          : ' + CONF.default_root);
+    console.log('Directory     : ' + process.cwd());
+    console.log('node_modules  : ' + PATHMODULES);
+    console.log('====================================================\n');
 
-	console.log('====================================================');
-	console.log('PID           : ' + process.pid);
-	console.log('Node.js       : ' + process.version);
-	console.log('Total.js      : v' + F.version);
-	console.log('OS            : ' + Os.platform() + ' ' + Os.release());
-	console.log('Memory        : ' + memory.heapUsed.filesize(2) + ' / ' + memory.heapTotal.filesize(2));
-	console.log('User          : ' + Os.userInfo().username);
-	console.log('====================================================');
-	console.log('Name          : ' + CONF.name);
-	console.log('Version       : ' + CONF.version);
-	CONF.author && console.log('Author        : ' + CONF.author);
-	console.log('Date          : ' + NOW.format('yyyy-MM-dd HH:mm:ss'));
-	console.log('Mode          : ' + (DEBUG ? 'debug' : 'release'));
-	F.threads && console.log('Threads       : ' + Object.keys(F.threads).join(', '));
-	global.THREAD && console.log('Thread        : ' + global.THREAD);
-	console.log('====================================================');
-	CONF.default_root && console.log('Root          : ' + CONF.default_root);
-	console.log('Directory     : ' + process.cwd());
-	console.log('node_modules  : ' + PATHMODULES);
-	console.log('====================================================\n');
+    if (!F.isWorker) {
 
-	if (!F.isWorker) {
+      var hostname = F.unixsocket ? ('Socket: ' + F.unixsocket) : '{2}://{0}:{1}/'.format(F.ip, F.port, F.isHTTPS ? 'https' : 'http');
 
-		var hostname = F.unixsocket ? ('Socket: ' + F.unixsocket) : '{2}://{0}:{1}/'.format(F.ip, F.port, F.isHTTPS ? 'https' : 'http');
+      if (!F.unixsocket && F.ip === '0.0.0.0') {
+        var ni = Os.networkInterfaces();
+        if (ni.en0) {
+          for (var i = 0; i < ni.en0.length; i++) {
+            var nii = ni.en0[i];
+            // nii.family === 'IPv6' ||
+            if (nii.family === 'IPv4') {
+              hostname += '\n{2}://{0}:{1}/'.format(nii.address, F.port, F.isHTTPS ? 'https' : 'http');
+              break;
+            }
+          }
+        }
+      }
 
-		if (!F.unixsocket && F.ip === '0.0.0.0') {
-			var ni = Os.networkInterfaces();
-			if (ni.en0) {
-				for (var i = 0; i < ni.en0.length; i++) {
-					var nii = ni.en0[i];
-					// nii.family === 'IPv6' ||
-					if (nii.family === 'IPv4') {
-						hostname += '\n{2}://{0}:{1}/'.format(nii.address, F.port, F.isHTTPS ? 'https' : 'http');
-						break;
-					}
-				}
-			}
-		}
-
-		console.log(hostname);
-		console.log('');
+      console.log(hostname);
+      console.log('');
+    }
 	}
 };
 
@@ -10913,7 +10915,7 @@ function configure_configs(arr, rewrite) {
 
 	// Cache for generated passwords
 	if (generated && generated.length) {
-		var filenameC = U.combine('/databases/', 'config{0}.json'.format(global.THREAD ? ('_' + global.THREAD) : ''));
+		var filenameC = U.combine(CONF.directory_databases, 'config{0}.json'.format(global.THREAD ? ('_' + global.THREAD) : ''));
 		var gdata;
 
 		if (existsSync(filenameC)) {
@@ -20012,7 +20014,7 @@ global.ACTION = function(url, data, callback) {
 	req.url = url;
 	req.ip = F.ip || '127.0.0.1';
 	req.host = req.ip + ':' + (F.port || 8000);
-	req.headers = { 'user-agent': 'Total.js/v' + F.version_header, 'x-test': 1 };
+	req.headers = { 'user-agent': FRAMEWORKNAME + '/v' + F.version_header, 'x-test': 1 };
 	req.uri = framework_internal.parseURI(req);
 	req.path = framework_internal.routesplit(req.uri.pathname);
 	req.method = method;
