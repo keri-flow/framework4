@@ -1761,10 +1761,10 @@ FP.send = function(path, body) {
 FP.add = function(name, body, callback, asfile) {
 
 	var self = this;
-	var meta = body.parseComponent({ readme: '<readme>', settings: '<settings>', css: '<style>', be: '<script total>', be2: '<script node>', js: '<script>', html: '<body>', schema: '<schema>', template: '<template>' });
-	var node = (meta.be || meta.be2 || '').trim().replace(/\n\t/g, '\n');
+	var meta = body.parseComponent({ readme: '<readme>', settings: '<settings>', css: '<style>', be: '<script flow>', be2: '<script component>', be3: '<script node>', js: '<script>', html: '<body>', schema: '<schema>', template: '<template>' });
+	var node = (meta.be || meta.be2 ||  meta.be3 || '').trim().replace(/\n\t/g, '\n');
 
-	if (!meta.be && !meta.be2) {
+	if (!meta.be && !meta.be2 && !meta.be3) {
 		var e = new Error('Invalid component content');
 		self.error(e, 'add', name);
 		callback && callback(e);
@@ -1800,6 +1800,7 @@ FP.add = function(name, body, callback, asfile) {
 
 					delete meta.be;
 					delete meta.be2;
+					delete meta.be3;
 
 					component = self.register(meta.id, fn, null, callback, true);
 
@@ -1832,6 +1833,7 @@ FP.add = function(name, body, callback, asfile) {
 
 		delete meta.be;
 		delete meta.be2;
+		delete meta.be3;
 		component = self.register(meta.id, fn, null, callback, true);
 
 		if (component)
