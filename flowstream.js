@@ -735,8 +735,8 @@ FP.register = function(name, declaration, config, callback, extend) {
 	};
 
 	self.loading++;
-
-	if (curr.npm && curr.npm.length) {
+	var isElectron = (typeof process !== 'undefined' && typeof process.versions === 'object' && !!process.versions.electron);
+	if (!isElectron && curr.npm && curr.npm.length) {
 		curr.npm.wait(function(name, next) {
 			NPMINSTALL(name, function(err) {
 				if (err) {
