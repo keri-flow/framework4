@@ -748,7 +748,7 @@ var _prefix;
 !global.framework_session && (global.framework_session = require('./session'));
 
 require('./tangular');
-require('./test');
+require('./globalTest');
 require('./templates');
 
 function countuploadstats(chunk) {
